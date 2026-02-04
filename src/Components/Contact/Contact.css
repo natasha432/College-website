@@ -38,17 +38,65 @@ list-style: 0.3 ;
 .contact-col form input, .contact-col form textarea{
   display: block;
   width: 100%;
-  background: #e1e2fb;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 15px;
-  border: 0;
-  outline: 0;
+  outline: none;
   margin-bottom: 15px;
   margin-top: 5px;
   resize: none;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-col form input:focus, .contact-col form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.contact-col form input::placeholder, .contact-col form textarea::placeholder {
+  color: #999;
 }
 .contact-col span{
   display: block;
   margin: 20px 0;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn img {
+  margin-left: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+.dark-btn {
+  background: #333;
+}
+
+.dark-btn:hover {
+  background: #555;
 }
 
 @media(max-width: 700px){

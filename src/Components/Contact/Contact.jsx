@@ -39,24 +39,24 @@ const Contact = () => {
           Send us a messege <img src={msg_icon} alt="" />
         </h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-          molestiae tempore cum inventore iure similique nam nihil quidem eum
-          saepe reprehenderit aperiam odio modi quasi eveniet recusandae sunt ab
-          dolorem. Recusandae inventore, repudiandae adipisci natus laudantium
-          corrupti. Repudiandae vol
+          Have questions about admissions, programs, or campus life? Our team is here to assist you. Reach out to us for guidance, support, or any academic-related inquiries.
         </p>
         <ul>
           <li>
             <img src={mail_icon} alt="" />
-            Contact@Anupriya
+            Contact@university
           </li>
           <li>
             <img src={phone_icon} alt="" />
-            +956782186232
+            +95xxxxxxxxx
           </li>
           <li>
             <img src={location_icon} alt="" />
-            gaya , bihar patna{" "}
+            Global Education 
+            <br />
+            North Academic District
+            <br />
+             New City-100100
           </li>
         </ul>
       </div>

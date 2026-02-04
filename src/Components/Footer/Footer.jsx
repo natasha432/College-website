@@ -61,7 +61,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2020 Appy. All rights reserved.</p>
+        <p>© 2025 Appy. All rights reserved.</p>
 
         <div className="footer-links">
           <span>Terms</span>

@@ -1,115 +1,95 @@
 import React, { useRef } from "react";
-import "./Testimonials.CSS";
-import next_icon from "../../assets/next-icon.png";
-import back_icon from "../../assets/back-icon.png";
+import "./Testimonials.css";
 import user_1 from "../../assets/user-1.png";
 import user_2 from "../../assets/user-2.png";
 import user_3 from "../../assets/user-3.png";
 import user_4 from "../../assets/user-4.png";
 
 const Testimonials = () => {
-  const slider = useRef();
-  let tx = 0;
+  const scrollRef = useRef(null);
 
-  const slideForward = () => {
-    if (tx > -50) {
-      tx -= 25;
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      const containerWidth = scrollRef.current.clientWidth;
+      scrollRef.current.scrollBy({
+        left: -containerWidth * 0.25,
+        behavior: "smooth",
+      });
     }
-    slider.current.style.transform = `translateX(${tx}%)`;
   };
 
-  const slideBackward = () => {
-    if (tx < 0) {
-      tx += 25;
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      const containerWidth = scrollRef.current.clientWidth;
+      scrollRef.current.scrollBy({
+        left: containerWidth * 0.25,
+        behavior: "smooth",
+      });
     }
-    slider.current.style.transform = `translateX(${tx}%)`;
   };
+
+  const testimonials = [
+    {
+      id: 1,
+      name: "Upashana Mishra",
+      position: "Student, IIT Patna",
+      image: user_1,
+      text: "Choosing to pursue my degree at Edusity was one of the best decisions I've ever made. The supportive community, state-of-the-art facilities, and commitment to academic excellence have truly exceeded my expectations.",
+    },
+    {
+      id: 2,
+      name: "Kishna kumar",
+      position: "Alumni, IIT Patna",
+      image: user_2,
+      text: "The education I received at Edusity has been instrumental in shaping my career. The professors are knowledgeable and the curriculum is designed to prepare students for real-world challenges.",
+    },
+    {
+      id: 3,
+      name: "Sakshi Shah",
+      position: "Researcher, IIT Patna",
+      image: user_3,
+      text: "Edusity offers an incredible learning environment. The resources available and the emphasis on practical learning have helped me grow both academically and personally.",
+    },
+    {
+      id: 4,
+      name: "Prakash singh",
+      position: "Engineer, IIT Patna",
+      image: user_4,
+      text: "I am grateful for the opportunities Edusity provided me. The network of alumni and the focus on innovation have opened many doors for me in my professional journey.",
+    },
+  ];
+
   return (
     <div className="testimonials">
-      <img
-        src={next_icon}
-        alt=""
-        className="next-btn "
-        onClick={slideForward}
-      />
-      <img
-        src={back_icon}
-        alt=""
-        className="back-btn"
-        onClick={slideBackward}
-      />
-      <div className="slider">
-        <ul ref={slider}>
-          <li>
-            <div className="slide">
-              <div className="user-info">
-                <img src={user_1} alt="" />
-                <div>
-                  <h3>Upashana sah</h3>
-                  <span>IIT, PATNA</span>
+      <div className="testimonials-container">
+        <div className="testimonials-wrapper">
+          <button className="scroll-btn left-btn" onClick={scrollLeft}>
+            ‹
+          </button>
+          <div className="testimonials-grid" ref={scrollRef}>
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="testimonial-card">
+                <div className="testimonial-content">
+                  <div className="testimonial-author">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="author-image"
+                    />
+                    <div className="author-info">
+                      <h3>{testimonial.name}</h3>
+                      <span>{testimonial.position}</span>
+                    </div>
+                  </div>
+                  <p className="testimonial-text">"{testimonial.text}"</p>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad Lorem ipsum dolor siexercitationem ut dolorum? Nam, neque dignissimos Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam, sapiente.
-                </p>
               </div>
-            </div>
-          </li>
-
-          <li>
-            <div className="slide">
-              <div className="user-info">
-                <img src={user_2} alt="" />
-                <div>
-                  <h3>Kishna sah</h3>
-                  <span>IIT, PATNA</span>
-                </div>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolores repudiandae ut doloribus odio sapiente! Ab iure
-                  incidunt blanditiis odit repudiandae vero deserunt nesciunt
-                  ipsum aliquid omnis animi saepe sequi nobis vel deleniti amet
-                  quia impedit nam autem, excepturi sapiente nulla.
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div className="slide">
-              <div className="user-info">
-                <img src={user_3} alt="" />
-                <div>
-                  <h3>Upas krdd sah</h3>
-                  <span>IIT, PATNA</span>
-                </div>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aperiam voluptate incidunt ex ab, provident tempore deleniti
-                  quis cumque dicta placeat harum necessitatibus sunt, vel
-                  aliquid atque repudiandae cum, et iusto?
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div className="slide">
-              <div className="user-info">
-                <img src={user_4} alt="" />
-                <div>
-                  <h3>Priyanka sah</h3>
-                  <span>IIT, PATNA</span>
-                </div>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Fugiat facere, provident cupiditate ratione iure, consequuntur
-                  ex culpa ab adipisci sed ipsa ipsam perferendis itaque officia
-                  repudiandae rerum saepe vitae dolores!
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
+            ))}
+          </div>
+          <button className="scroll-btn right-btn" onClick={scrollRight}>
+            ›
+          </button>
+        </div>
       </div>
     </div>
   );
